@@ -1,34 +1,21 @@
-W.G.-Unity3D-SQLite
-===================
+# Unity3D + SQLite example
 
-SQLite Database code for Unity3D independent version.
+This is a minimal, ready to run example on how to use SQLite from Unity3D
 
-This is a working code with a scene example of how to implement it.
-It was designed to be SO EASY and READY TO RUN.
+## Using it in your project
 
-But there's some extra works during the build, which is you have to include the database manually into your build source folder.
+To use Sqlite make sure `System.Data.dll` and `Mono.Data.Sqlite.dll` are included in your project
+Both files can be found in:
+/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/
 
-I didn't use it myself, so please don't expect any support from me.
-Why it's here explained below.
+For more info refer to DBAccess.cs
 
-The database are written with Database Browser for SQLite (http://sqlitebrowser.org/).
-So there's no "create" query.
-Only write to change value of existing tables.
+```
+using Mono.Data.Sqlite; // Requires Mono.Data.Sqlite.dll
+using System.Data;      // Requires System.Data.dll
 
-Until I really use this, sorry for all the inconvenient. :(
-
-The codes are assembled from all around the internet.
-Some don't even put names to be credited here.
-Make it worst, this codes are from the year early 2014 and I lost all the references to it.
-But I always got requests for this through emails, and sometimes I reply very late, thus why it's here.
-For the convenient of users.
-
-
-Best regards,
-
-
-Pangeran Wiguan
-
-http://pangeranwiguan.com
-
-http://wgcreativemedia.com
+IDbConnection connection = new SqliteConnection(path) as IDbConnection;
+IDbCommand cmd = connection.CreateCommand();
+IDataReaded reader = cmd.ExecuteReader();
+...
+```
